@@ -141,10 +141,17 @@ include "includes/options_config.php";
             } else {
                 $filename = $mod_logs;
             }
-
-            $fh = fopen($filename, "r"); // or die("Could not open file.");
-            $data = fread($fh, filesize($filename)); // or die("Could not read file.");
-            fclose($fh);
+        
+            /*
+            if ( 0 < filesize( $filename ) ) {
+                $fh = fopen($filename, "r"); // or die("Could not open file.");
+                $data = fread($fh, filesize($filename)); // or die("Could not read file.");
+                fclose($fh);
+            }
+            */
+        
+            $data = open_file($filename);
+                
             $data_array = explode("\n", $data);
             $data = implode("\n",array_reverse($data_array));
             
@@ -278,10 +285,16 @@ include "includes/options_config.php";
         <?
             $filename = "$mod_path/includes/mode_b.txt";
 
-            $fh = fopen($filename, "r"); // or die("Could not open file.");
-            $data = fread($fh, filesize($filename)); // or die("Could not read file.");
-            fclose($fh);
-            
+            /*
+            if ( 0 < filesize( $filename ) ) {
+                $fh = fopen($filename, "r"); // or die("Could not open file.");
+                $data = fread($fh, filesize($filename)); // or die("Could not read file.");
+                fclose($fh);
+            }
+            */
+        
+            $data = open_file($filename);
+        
             //echo str_replace("\n","<br>",htmlspecialchars($data));
             
             include "includes/mode_b.htm";
@@ -342,9 +355,15 @@ include "includes/options_config.php";
         <?
             $filename = "$mod_path/includes/mode_a.txt";
 
-            $fh = fopen($filename, "r"); // or die("Could not open file.");
-            $data = fread($fh, filesize($filename)); // or die("Could not read file.");
-            fclose($fh);
+            /*
+            if ( 0 < filesize( $filename ) ) {
+                $fh = fopen($filename, "r"); // or die("Could not open file.");
+                $data = fread($fh, filesize($filename)); // or die("Could not read file.");
+                fclose($fh);
+            }
+            */
+            
+            $data = open_file($filename);
             
             //echo str_replace("\n","<br>",htmlspecialchars($data));
             
@@ -439,9 +458,15 @@ include "includes/options_config.php";
         <?
             $filename = "$mod_path/includes/mode_d.txt";
 
-            $fh = fopen($filename, "r"); // or die("Could not open file.");
-            $data = fread($fh, filesize($filename)); // or die("Could not read file.");
-            fclose($fh);
+            /*
+            if ( 0 < filesize( $filename ) ) {
+                $fh = fopen($filename, "r"); // or die("Could not open file.");
+                $data = fread($fh, filesize($filename)); // or die("Could not read file.");
+                fclose($fh);
+            }
+            */
+            
+            $data = open_file($filename);
             
             //echo str_replace("\n","<br>",htmlspecialchars($data));
             
@@ -461,9 +486,17 @@ include "includes/options_config.php";
         <?
         	if ($tempname != "") {
             	$filename = "$mod_path/includes/templates/".$tempname;
-            	$fh = fopen($filename, "r"); // or die("Could not open file.");
-            	$data = fread($fh, filesize($filename)); // or die("Could not read file.");
-            	fclose($fh);
+                
+                /*
+                if ( 0 < filesize( $filename ) ) {
+                    $fh = fopen($filename, "r"); // or die("Could not open file.");
+                    $data = fread($fh, filesize($filename)); // or die("Could not read file.");
+                    fclose($fh);
+                }
+                */
+                
+                $data = open_file($filename);
+            
 			} else {
 				$data = "";
 			}
