@@ -8,6 +8,7 @@ v1.1
 ---------------------------------
 - FruityWifi v1.5 is required
 - MDK3 needs to be installed manually (apt/tar)
+- Required: aircrack-ng (apt/tar)
 
 
 v1.0
