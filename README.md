@@ -4,6 +4,13 @@ module_mdk3
 FruityWifi mdk3 module
 
 
+v1.1
+---------------------------------
+- FruityWifi v1.5 is required
+- MDK3 needs to be installed manually
+- Required: aircrack-ng
+
+
 v1.0
 ---------------------------------
 - FruityWifi v1.4 is required
@@ -12,6 +19,4 @@ v1.0
 - Authentication DoS mode (added) 
 - Deauthentication / Disassociation Amok Mode (added)
 - Lists can be created
-
-
 
