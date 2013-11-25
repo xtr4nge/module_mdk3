@@ -30,11 +30,13 @@ if ($regex == 1) {
     regex_standard($_GET["action"], "../msg.php", $regex_extra);
     regex_standard($_GET["page"], "../msg.php", $regex_extra);
     regex_standard($iface_wifi, "../msg.php", $regex_extra);
+    regex_standard($_GET["install"], "../msg.php", $regex_extra);
 }
 
 $service = $_GET['service'];
 $action = $_GET['action'];
 $page = $_GET['page'];
+$install = $_GET['install'];
 
 if($service != "") {
     
@@ -57,11 +59,11 @@ if($service != "") {
         start_monitor_mode($iface_wifi_extra);
         
         // COPY LOG
-        $exec = "cp $mod_logs logs/".gmdate("Ymd-H-i-s").".log";
-        exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $dump);
+        $exec = "$bin_cp $mod_logs logs/".gmdate("Ymd-H-i-s").".log";
+        exec("$bin_danger \"$exec\"", $dump);
         // CLEAN LOGS
-        $exec = "echo '' > $mod_logs";
-        exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"" );
+        $exec = "$bin_echo '' > $mod_logs";
+        exec("$bin_danger \"$exec\"" );
         // START MODULE
         
         if ($service == "mode_b") {
@@ -105,14 +107,26 @@ if($service != "") {
         }
 
         
-        $exec = "/usr/bin/mdk3 mon0 $mode $options >> $mod_logs &";
-        exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"" );
+        $exec = "$bin_mdk3 mon0 $mode $options >> $mod_logs &";
+        exec("$bin_danger \"$exec\"" );
     } else if($action == "stop") {
         // STOP MODULE
-        $exec = "killall mdk3";
-        exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"" );
+        $exec = "$bin_killall mdk3";
+        exec("$bin_danger \"$exec\"" );
     }
 
+}
+
+if ($install == "install_mdk3") {
+
+    $exec = "$bin_chmod 755 install.sh";
+    exec("$bin_danger \"$exec\"" );
+
+    $exec = "$bin_sudo ./install.sh > /usr/share/FruityWifi/logs/install.txt &";
+    exec("$bin_danger \"$exec\"" );
+
+    header('Location: ../../install.php?module=mdk3');
+    exit;
 }
 
 //header('Location: ../index.php?tab=0');

@@ -85,10 +85,11 @@ include "includes/options_config.php";
 
     &nbsp;&nbsp;version <?=$mod_version?><br>
     <? 
-    if (file_exists("/usr/bin/mdk3")) { 
+    if (file_exists("$bin_mdk3")) { 
         echo "&nbsp;&nbsp;&nbsp;&nbsp; mdk3 <font style='color:lime'>installed</font><br>";
     } else {
-        echo "&nbsp;&nbsp;&nbsp;&nbsp; mdk3 <font style='color:red'>install</font><br>";
+        //echo "&nbsp;&nbsp;&nbsp;&nbsp; mdk3 <font style='color:red'>install</font><br>";
+        echo "&nbsp;&nbsp;&nbsp;&nbsp; mdk3 <a href='includes/module_action.php?install=install_mdk3' style='color:red'>install</a><br>";
     } 
     ?>
     
