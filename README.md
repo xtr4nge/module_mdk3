@@ -4,6 +4,12 @@ module_mdk3
 FruityWifi mdk3 module
 
 
+v1.2
+---------------------------------
+- mdk3 installer has been added
+- Required: aircrack-ng
+
+
 v1.1
 ---------------------------------
 - FruityWifi v1.5 is required
