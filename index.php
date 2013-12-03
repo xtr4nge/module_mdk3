@@ -96,13 +96,13 @@ include "includes/options_config.php";
     <?
     $ismdk3up = exec("ps auxww | grep mdk3 | grep -v -e grep");
     if ($ismdk3up != "") {
-        echo "&nbsp;&nbsp;&nbsp;&nbsp; mdk3  <font color=\"lime\"><b>enabled</b></font>.&nbsp; | <a href=\"includes/module_action.php?service=$ss_mode&action=stop&page=module\"><b>stop</b></a>";
+        echo "&nbsp;&nbsp;&nbsp;&nbsp; mdk3  <font color=\"lime\"><b>enabled</b></font>.&nbsp; | <a href=\"includes/module_action.php?service=mdk3&action=stop&page=module\"><b>stop</b></a>";
         //echo "&nbsp;&nbsp;&nbsp;&nbsp; mdk3  <font color=\"lime\"><b>enabled</b></font>.&nbsp; | <a href='#' onclick='document.ss_mode.submit();'><b>stop</b></a>&nbsp;";
         //echo "<input type='hidden' name='service' value=''>";
         echo "<input type='hidden' name='action' value='stop'>";
         echo "<input type='hidden' name='page' value='module'>";
     } else { 
-        echo "&nbsp;&nbsp;&nbsp;&nbsp; mdk3  <font color=\"red\"><b>disabled</b></font>. | <a href=\"includes/module_action.php?service=$ss_mode&action=start&page=module\"><b>start</b></a>"; 
+        echo "&nbsp;&nbsp;&nbsp;&nbsp; mdk3  <font color=\"red\"><b>disabled</b></font>. | <a href=\"includes/module_action.php?service=mdk3&action=start&page=module\"><b>start</b></a>"; 
         //echo "&nbsp;&nbsp;&nbsp;&nbsp; mdk3  <font color=\"red\"><b>disabled</b></font>. | <a href='#' onclick='document.ss_mode.submit();'><b>start</b></a>"; 
         //echo "<input type='hidden' name='service' value=''>";
         echo "<input type='hidden' name='action' value='start'>";

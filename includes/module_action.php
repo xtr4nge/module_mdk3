@@ -66,7 +66,8 @@ if($service != "") {
         exec("$bin_danger \"$exec\"" );
         // START MODULE
         
-        if ($service == "mode_b") {
+        //if ($service == "mode_b") {
+        if ($ss_mode == "mode_b") {
             
             $mode = "b";
             $tmp = array_keys($mode_b);
@@ -80,7 +81,8 @@ if($service != "") {
                 }
             }
         
-        } else if ($service == "mode_a") {
+        //} else if ($service == "mode_a") {
+        } else if ($ss_mode == "mode_a") {
             
             $mode = "a";
             $tmp = array_keys($mode_a);
@@ -90,7 +92,8 @@ if($service != "") {
                 }
             }
 
-        } else if ($service == "mode_d") {
+        //} else if ($service == "mode_d") {
+        } else if ($ss_mode == "mode_d") {
             
             $mode = "d";
             $tmp = array_keys($mode_d);
@@ -129,8 +132,12 @@ if ($install == "install_mdk3") {
     exit;
 }
 
-//header('Location: ../index.php?tab=0');
-header('Location: ../../action.php?page=mdk3');
+if ($page == "status") {
+    header('Location: ../../../action.php');
+} else {
+    header('Location: ../../action.php?page=mdk3');
+}
+//header('Location: ../../action.php?page=mdk3');
 
 /*
 if ($page == "list") {
