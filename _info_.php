@@ -10,7 +10,7 @@ $mod_alias="mdk3";
 # EXEC
 $bin_danger = "/usr/share/FruityWifi/bin/danger";
 $bin_mdk3 = "/usr/bin/mdk3";
-$bin_echo = "/bin_echo";
+$bin_echo = "/bin/echo";
 $bin_killall = "/usr/bin/killall";
 $bin_cp = "/bin/cp";
 $bin_chmod = "/bin/chmod";
