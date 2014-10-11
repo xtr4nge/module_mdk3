@@ -29,7 +29,6 @@ if ($regex == 1) {
     regex_standard($_GET["service"], "../msg.php", $regex_extra);
     regex_standard($_GET["action"], "../msg.php", $regex_extra);
     regex_standard($_GET["page"], "../msg.php", $regex_extra);
-    regex_standard($iface_wifi, "../msg.php", $regex_extra);
     regex_standard($_GET["install"], "../msg.php", $regex_extra);
 }
 
@@ -47,7 +46,7 @@ if($service != "") {
     // START MONITOR MODE (mon0)
     $iface_mon0 = exec("/sbin/ifconfig |grep mon0");
     if ($iface_mon0 == "") {
-        $exec = "/usr/bin/sudo /usr/sbin/airmon-ng start $iface_wifi_extra";
+        $exec = "/usr/bin/sudo /usr/sbin/airmon-ng start $io_action_extra";
         exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output);
         //exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"");
     }
@@ -56,7 +55,7 @@ if($service != "") {
     if ($action == "start") {
         
         // START MONITOR MODE (mon0)
-        start_monitor_mode($iface_wifi_extra);
+        start_monitor_mode($io_action_extra);
         
         // COPY LOG
         $exec = "$bin_cp $mod_logs logs/".gmdate("Ymd-H-i-s").".log";

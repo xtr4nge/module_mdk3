@@ -1,6 +1,6 @@
 <? 
 /*
-	Copyright (C) 2013  xtr4nge [_AT_] gmail.com
+	Copyright (C) 2013-2014  xtr4nge [_AT_] gmail.com
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -46,6 +46,7 @@ $(function() {
 
 include "_info_.php";
 include "../../config/config.php";
+include "../../login_check.php";
 include "../../functions.php";
 
 // Checking POST & GET variables...
@@ -167,12 +168,12 @@ include "includes/options_config.php";
 
     <!-- START Beacon Flood Mode -->
 
-    <div id="result-2">
+    <div id="result-2" class="module-options">
         <form id="formInject" name="formInject" method="POST" autocomplete="off" action="includes/save.php">
         <input type="submit" value="save">
         <br><br>
         
-        <div class="module" style="background-color:#000; border:1px dashed;">
+        <div class="module-options" style="b-ackground-color:#000; b-order:1px dashed;">
         <table>
             <tr>
                 <td><input type="checkbox" name="options[]" value="f" <? if ($mode_b["f"][0] == "1") echo "checked" ?> ></td>
@@ -306,12 +307,12 @@ include "includes/options_config.php";
     
     <!-- START Authentication DoS mode -->
 
-    <div id="result-3">
+    <div id="result-3" class="module-options">
         <form id="formInject" name="formInject" method="POST" autocomplete="off" action="includes/save.php">
         <input type="submit" value="save">
         <br><br>
         
-        <div class="module" style="background-color:#000; border:1px dashed;">
+        <div class="module-options" style="b-ackground-color:#000; b-order:1px dashed;">
         <table>
             <!-- // OPTION a --> 
             <tr>
@@ -375,12 +376,12 @@ include "includes/options_config.php";
 
     <!-- START Deauthentication / Disassociation Amok Mode -->
 
-    <div id="result-4">
+    <div id="result-4" class="module-options">
         <form id="formInject" name="formInject" method="POST" autocomplete="off" action="includes/save.php">
         <input type="submit" value="save">
         <br><br>
         
-        <div class="module" style="background-color:#000; border:1px dashed;">
+        <div class="module-options" style="b-ackground-color:#000; b-order:1px dashed;">
         <table>
             <!-- // OPTION w --> 
             <tr>
@@ -513,7 +514,7 @@ include "includes/options_config.php";
         
     <table border=0 cellspacing=0 cellpadding=0>
     	<tr>
-    	<td>
+    	<td class="general">
     		Template
     	</td>
     	<td>
@@ -538,7 +539,7 @@ include "includes/options_config.php";
     	</form>
         </td>
         <tr>
-        <td style="padding-right:10px">
+        <td class="general" style="padding-right:10px">
         	Add/Rename
         </td>
         <td>
@@ -608,13 +609,10 @@ include "includes/options_config.php";
     </div>
 
     <!-- END LISTS -->
+	
+	<!-- HISTORY -->
 
-
-
-
-
-
-    <div id="result-7">
+    <div id="result-7" class="history">
         <input type="submit" value="refresh">
         <br><br>
         
