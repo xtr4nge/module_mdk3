@@ -55,7 +55,7 @@ if($service != "") {
     if ($action == "start") {
         
         // START MONITOR MODE (mon0)
-        start_monitor_mode($io_action_extra);
+        start_monitor_mode($io_in_iface_extra);
         
         // COPY LOG
         $exec = "$bin_cp $mod_logs logs/".gmdate("Ymd-H-i-s").".log";
