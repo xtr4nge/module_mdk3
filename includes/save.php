@@ -1,7 +1,6 @@
 <?
-
-include "../_info_.php";
 include "../../../config/config.php";
+include "../_info_.php";
 include "../../../functions.php";
 
 include "options_config.php";
@@ -36,8 +35,9 @@ if ($type == "mode_b") {
         //echo $tmp[$i]."<br>";
         
         $exec = "/bin/sed -i 's/mode_b\\[\\\"".$tmp[$i]."\\\"\\]\\[0\\].*/mode_b\\[\\\"".$tmp[$i]."\\\"\\]\\[0\\] = 0;/g' options_config.php";
-        exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output);
-        echo $exec."<br>";
+        //exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output); //DEPRECATED
+        exec_fruitywifi($exec);
+        //echo $exec."<br>";
         
     }
 
@@ -46,39 +46,45 @@ if ($type == "mode_b") {
         //echo $tmp[$i]."<br>";
         
         $exec = "/bin/sed -i 's/mode_b\\[\\\"".$tmp[$i]."\\\"\\]\\[0\\].*/mode_b\\[\\\"".$tmp[$i]."\\\"\\]\\[0\\] = 1;/g' options_config.php";
-        exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output);
-        echo $exec."<br>";
+        //exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output); //DEPRECATED
+        exec_fruitywifi($exec);
+        //echo $exec."<br>";
         
     }
     
     $opt_f = $_POST["opt_f"];
     if ($opt_f != "") {
         $exec = "/bin/sed -i 's/mode_b\\[\\\"f\\\"\\]\\[2\\].*/mode_b\\[\\\"f\\\"\\]\\[2\\] = \\\"".$opt_f."\\\";/g' options_config.php";
-        exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output);
+        //exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output); //DEPRECATED
+        exec_fruitywifi($exec);
     }
 
     $opt_v = $_POST["opt_v"];
     if ($opt_v != "") {
         $exec = "/bin/sed -i 's/mode_b\\[\\\"v\\\"\\]\\[2\\].*/mode_b\\[\\\"v\\\"\\]\\[2\\] = \\\"".$opt_v."\\\";/g' options_config.php";
-        exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output);
+        //exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output); //DEPRECATED
+        exec_fruitywifi($exec);
     }
 
     $opt_n = $_POST["opt_n"];
     if ($opt_n != "") {
         $exec = "/bin/sed -i 's/mode_b\\[\\\"n\\\"\\]\\[2\\].*/mode_b\\[\\\"n\\\"\\]\\[2\\] = \\\"".$opt_n."\\\";/g' options_config.php";
-        exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output);
+        //exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output); //DEPRECATED
+        exec_fruitywifi($exec);
     }
 
     $opt_c = $_POST["opt_c"];
     if ($opt_c != "") {
         $exec = "/bin/sed -i 's/mode_b\\[\\\"c\\\"\\]\\[2\\].*/mode_b\\[\\\"c\\\"\\]\\[2\\] = \\\"".$opt_c."\\\";/g' options_config.php";
-        exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output);
+        //exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output); //DEPRECATED
+        exec_fruitywifi($exec);
     }
 
     $opt_s = $_POST["opt_s"];
     if ($opt_s != "") {
         $exec = "/bin/sed -i 's/mode_b\\[\\\"s\\\"\\]\\[2\\].*/mode_b\\[\\\"s\\\"\\]\\[2\\] = \\\"".$opt_s."\\\";/g' options_config.php";
-        exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output);
+        //exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output); //DEPRECATED
+        exec_fruitywifi($exec);
     }
 
     header('Location: ../index.php?tab=1');
@@ -96,16 +102,18 @@ if ($type == "mode_a") {
     $tmp = array_keys($mode_a);
     for ($i=0; $i< count($tmp); $i++) {
         $exec = "/bin/sed -i 's/mode_".$mode."\\[\\\"".$tmp[$i]."\\\"\\]\\[0\\].*/mode_".$mode."\\[\\\"".$tmp[$i]."\\\"\\]\\[0\\] = 0;/g' options_config.php";
-        exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output);
-        echo $exec."<br>";
+        //exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output); //DEPRECATED
+        exec_fruitywifi($exec);
+        //echo $exec."<br>";
     }
 
     // SAVE CHECKBOX
     $tmp = $_POST["options"];
     for ($i=0; $i< count($tmp); $i++) {
         $exec = "/bin/sed -i 's/mode_".$mode."\\[\\\"".$tmp[$i]."\\\"\\]\\[0\\].*/mode_".$mode."\\[\\\"".$tmp[$i]."\\\"\\]\\[0\\] = 1;/g' options_config.php";
-        exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output);
-        echo $exec."<br>";
+        //exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output); //DEPRECATED
+        exec_fruitywifi($exec);
+        //echo $exec."<br>";
     }
 
     // SAVE VALUES
@@ -113,28 +121,32 @@ if ($type == "mode_a") {
     $opt_value = $_POST["opt_".$opt];
     if ($opt != "") {
         $exec = "/bin/sed -i 's/mode_".$mode."\\[\\\"".$opt."\\\"\\]\\[2\\].*/mode_".$mode."\\[\\\"".$opt."\\\"\\]\\[2\\] = \\\"".$opt_value."\\\";/g' options_config.php";
-        exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output);
+        //exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output); //DEPRECATED
+        exec_fruitywifi($exec);
     }
 
     $opt = "i";
     $opt_value = $_POST["opt_".$opt];
     if ($opt != "") {
         $exec = "/bin/sed -i 's/mode_".$mode."\\[\\\"".$opt."\\\"\\]\\[2\\].*/mode_".$mode."\\[\\\"".$opt."\\\"\\]\\[2\\] = \\\"".$opt_value."\\\";/g' options_config.php";
-        exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output);
+        //exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output); //DEPRECATED
+        exec_fruitywifi($exec);
     }
 
     $opt = "c";
     $opt_value = $_POST["opt_".$opt];
     if ($opt != "") {
         $exec = "/bin/sed -i 's/mode_".$mode."\\[\\\"".$opt."\\\"\\]\\[2\\].*/mode_".$mode."\\[\\\"".$opt."\\\"\\]\\[2\\] = \\\"".$opt_value."\\\";/g' options_config.php";
-        exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output);
+        //exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output); //DEPRECATED
+        exec_fruitywifi($exec);
     }
 
     $opt = "s";
     $opt_value = $_POST["opt_".$opt];
     if ($opt != "") {
         $exec = "/bin/sed -i 's/mode_".$mode."\\[\\\"".$opt."\\\"\\]\\[2\\].*/mode_".$mode."\\[\\\"".$opt."\\\"\\]\\[2\\] = \\\"".$opt_value."\\\";/g' options_config.php";
-        exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output);
+        //exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output); //DEPRECATED
+        exec_fruitywifi($exec);
     }
 
     header('Location: ../index.php?tab=2');
@@ -152,16 +164,18 @@ if ($type == "mode_d") {
     $tmp = array_keys($mode_d);
     for ($i=0; $i< count($tmp); $i++) {
         $exec = "/bin/sed -i 's/mode_".$mode."\\[\\\"".$tmp[$i]."\\\"\\]\\[0\\].*/mode_".$mode."\\[\\\"".$tmp[$i]."\\\"\\]\\[0\\] = 0;/g' options_config.php";
-        exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output);
-        echo $exec."<br>";
+        //exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output); //DEPRECATED
+        exec_fruitywifi($exec);
+        //echo $exec."<br>";
     }
 
     // SAVE CHECKBOX
     $tmp = $_POST["options"];
     for ($i=0; $i< count($tmp); $i++) {
         $exec = "/bin/sed -i 's/mode_".$mode."\\[\\\"".$tmp[$i]."\\\"\\]\\[0\\].*/mode_".$mode."\\[\\\"".$tmp[$i]."\\\"\\]\\[0\\] = 1;/g' options_config.php";
-        exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output);
-        echo $exec."<br>";
+        //exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output); //DEPRECATED
+        exec_fruitywifi($exec);
+        //echo $exec."<br>";
     }
 
     // SAVE VALUES
@@ -169,35 +183,40 @@ if ($type == "mode_d") {
     $opt_value = $_POST["opt_".$opt];
     if ($opt != "") {
         $exec = "/bin/sed -i 's/mode_".$mode."\\[\\\"".$opt."\\\"\\]\\[2\\].*/mode_".$mode."\\[\\\"".$opt."\\\"\\]\\[2\\] = \\\"".$opt_value."\\\";/g' options_config.php";
-        exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output);
+        //exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output); //DEPRECATED
+        exec_fruitywifi($exec);
     }
 
     $opt = "b";
     $opt_value = $_POST["opt_".$opt];
     if ($opt != "") {
         $exec = "/bin/sed -i 's/mode_".$mode."\\[\\\"".$opt."\\\"\\]\\[2\\].*/mode_".$mode."\\[\\\"".$opt."\\\"\\]\\[2\\] = \\\"".$opt_value."\\\";/g' options_config.php";
-        exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output);
+        //exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output); //DEPRECATED
+        exec_fruitywifi($exec);
     }
 
     $opt = "d";
     $opt_value = $_POST["opt_".$opt];
     if ($opt != "") {
         $exec = "/bin/sed -i 's/mode_".$mode."\\[\\\"".$opt."\\\"\\]\\[2\\].*/mode_".$mode."\\[\\\"".$opt."\\\"\\]\\[2\\] = \\\"".$opt_value."\\\";/g' options_config.php";
-        exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output);
+        //exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output); //DEPRECATED
+        exec_fruitywifi($exec);
     }
 
     $opt = "c";
     $opt_value = $_POST["opt_".$opt];
     if ($opt != "") {
         $exec = "/bin/sed -i 's/mode_".$mode."\\[\\\"".$opt."\\\"\\]\\[2\\].*/mode_".$mode."\\[\\\"".$opt."\\\"\\]\\[2\\] = \\\"".$opt_value."\\\";/g' options_config.php";
-        exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output);
+        //exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output); //DEPRECATED
+        exec_fruitywifi($exec);
     }
 
     $opt = "s";
     $opt_value = $_POST["opt_".$opt];
     if ($opt != "") {
         $exec = "/bin/sed -i 's/mode_".$mode."\\[\\\"".$opt."\\\"\\]\\[2\\].*/mode_".$mode."\\[\\\"".$opt."\\\"\\]\\[2\\] = \\\"".$opt_value."\\\";/g' options_config.php";
-        exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output);
+        //exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output); //DEPRECATED
+        exec_fruitywifi($exec);
     }
 
     header('Location: ../index.php?tab=3');
@@ -214,7 +233,8 @@ if ($type == "templates") {
 			if ($newdata != "") { $newdata = ereg_replace(13,  "", $newdata);
 				$template_path = "$mod_path/includes/templates";
         		$exec = "/bin/echo '$newdata' | base64 --decode > $template_path/$tempname";
-        		exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output);
+        		//exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output); //DEPRECATED
+                exec_fruitywifi($exec);
     		}
     	}
     	
@@ -225,7 +245,8 @@ if ($type == "templates") {
 			if ($new_rename_file != "") {
 				$template_path = "$mod_path/includes/templates";
 				$exec = "/bin/touch $template_path/$new_rename_file";
-				exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output);
+				//exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output); //DEPRECATED
+                exec_fruitywifi($exec);
 
 				$tempname=$new_rename_file;
 			}
@@ -233,7 +254,8 @@ if ($type == "templates") {
 			//RENAME TEMPLATE
 			$template_path = "$mod_path/includes/templates";
 			$exec = "/bin/mv $template_path/$new_rename $template_path/$new_rename_file";
-			exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output);
+			//exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output); //DEPRECATED
+            exec_fruitywifi($exec);
 
 			$tempname=$new_rename_file;
 		}
@@ -243,7 +265,8 @@ if ($type == "templates") {
 			//DELETE TEMPLATE
 			$template_path = "$mod_path/includes/templates";
 			$exec = "/bin/rm $template_path/$new_rename";
-			exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output);	
+			//exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output); //DEPRECATED
+            exec_fruitywifi($exec);
 		}
 	}
 	header("Location: ../index.php?tab=4&tempname=$tempname");

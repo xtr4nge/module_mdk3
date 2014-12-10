@@ -1,26 +1,26 @@
 <? 
 /*
-	Copyright (C) 2013  xtr4nge [_AT_] gmail.com
+    Copyright (C) 2013-2014 xtr4nge [_AT_] gmail.com
 
-	This program is free software: you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
 
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
 
-	You should have received a copy of the GNU General Public License
-	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 ?>
 <?
 //include "../login_check.php";
+include "../../../config/config.php";
 include "../_info_.php";
-include "/usr/share/FruityWifi/www/config/config.php";
-include "/usr/share/FruityWifi/www/functions.php";
+include "../../../functions.php";
 
 include "options_config.php";
 
@@ -47,7 +47,7 @@ if($service != "") {
     $iface_mon0 = exec("/sbin/ifconfig |grep mon0");
     if ($iface_mon0 == "") {
         $exec = "/usr/bin/sudo /usr/sbin/airmon-ng start $io_action_extra";
-        exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output);
+        //exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output); //DEPRECATED
         //exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"");
     }
     */    
@@ -59,10 +59,14 @@ if($service != "") {
         
         // COPY LOG
         $exec = "$bin_cp $mod_logs logs/".gmdate("Ymd-H-i-s").".log";
-        exec("$bin_danger \"$exec\"", $dump);
+        //exec("$bin_danger \"$exec\"", $dump); //DEPRECATED
+	exec_fruitywifi($exec);
+	
         // CLEAN LOGS
         $exec = "$bin_echo '' > $mod_logs";
-        exec("$bin_danger \"$exec\"" );
+        //exec("$bin_danger \"$exec\"" ); //DEPRECATED
+	exec_fruitywifi($exec);
+	
         // START MODULE
         
         //if ($service == "mode_b") {
@@ -107,14 +111,16 @@ if($service != "") {
             }
 
         }
-
         
         $exec = "$bin_mdk3 mon0 $mode $options >> $mod_logs &";
-        exec("$bin_danger \"$exec\"" );
+        //exec("$bin_danger \"$exec\"" ); //DEPRECATED
+	exec_fruitywifi($exec);
+	
     } else if($action == "stop") {
         // STOP MODULE
         $exec = "$bin_killall mdk3";
-        exec("$bin_danger \"$exec\"" );
+        //exec("$bin_danger \"$exec\"" ); //DEPRECATED
+	exec_fruitywifi($exec);
     }
 
 }
@@ -122,10 +128,12 @@ if($service != "") {
 if ($install == "install_mdk3") {
 
     $exec = "$bin_chmod 755 install.sh";
-    exec("$bin_danger \"$exec\"" );
+    //exec("$bin_danger \"$exec\"" ); //DEPRECATED
+    exec_fruitywifi($exec);
 
-    $exec = "$bin_sudo ./install.sh > /usr/share/FruityWifi/logs/install.txt &";
-    exec("$bin_danger \"$exec\"" );
+    $exec = "$bin_sudo ./install.sh > $log_path/install.txt &";
+    //exec("$bin_danger \"$exec\"" ); //DEPRECATED
+    exec_fruitywifi($exec);
 
     header('Location: ../../install.php?module=mdk3');
     exit;
@@ -138,14 +146,4 @@ if ($page == "status") {
 }
 //header('Location: ../../action.php?page=mdk3');
 
-/*
-if ($page == "list") {
-    header('Location: ../page_modules.php');    
-} else if ($page == "module") {
-    //header('Location: ../modules/dnsspoof/index.php');
-    header('Location: ../modules/action.php?page=urlsnarf');
-} else {
-    header('Location: ../page_status.php');
-}
-*/
 ?>

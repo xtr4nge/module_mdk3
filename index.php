@@ -1,19 +1,19 @@
 <? 
 /*
-	Copyright (C) 2013-2014  xtr4nge [_AT_] gmail.com
+    Copyright (C) 2013-2014 xtr4nge [_AT_] gmail.com
 
-	This program is free software: you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
 
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
 
-	You should have received a copy of the GNU General Public License
-	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 ?>
 <!DOCTYPE HTML>
@@ -43,9 +43,8 @@ $(function() {
 <br>
 
 <?
-
-include "_info_.php";
 include "../../config/config.php";
+include "_info_.php";
 include "../../login_check.php";
 include "../../functions.php";
 
@@ -66,14 +65,16 @@ $service = $_POST["service"];
 // DELETE LOG
 if ($logfile != "" and $action == "delete") {
     $exec = "rm ".$mod_logs_history.$logfile.".log";
-    exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $dump);
+    //exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $dump); //DEPRECATED
+    exec_fruitywifi($exec);
 }
 
 // SET MODE
 if ($_POST["change_mode"] == "1") {
     $ss_mode = $service;
     $exec = "/bin/sed -i 's/ss_mode.*/ss_mode = \\\"".$ss_mode."\\\";/g' includes/options_config.php";
-    exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output);
+    //exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output); //DEPRECATED
+    exec_fruitywifi($exec);
 }
 
 include "includes/options_config.php";
