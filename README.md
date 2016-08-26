@@ -1,7 +1,12 @@
 module_mdk3
 ===========
 
-FruityWifi mdk3 module
+FruityWiFi mdk3 module
+
+
+v1.8
+---------------------------------
+- PHP7 compatibility issues has been fixed
 
 
 v1.2
